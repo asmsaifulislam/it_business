@@ -1,0 +1,51 @@
+from flask_sqlalchemy import SQLAlchemy
+from flask_login import UserMixin
+
+db = SQLAlchemy()
+
+# -------------------- User --------------------
+class User(db.Model, UserMixin):
+    __tablename__ = "users"   # ✅ renamed to plural (avoid reserved word)
+
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(120), unique=True, nullable=False)
+    password = db.Column(db.String(512), nullable=False)  # big enough for hashes
+
+# -------------------- Customer --------------------
+class Customer(db.Model):
+    __tablename__ = "customers"
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+
+# -------------------- Product --------------------
+class Product(db.Model):
+    __tablename__ = "products"
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    price = db.Column(db.Float, nullable=False)
+
+# -------------------- Sale --------------------
+class Sale(db.Model):
+    __tablename__ = "sales"
+
+    id = db.Column(db.Integer, primary_key=True)
+    customer_id = db.Column(db.Integer, db.ForeignKey('customers.id'), nullable=False)
+    product_id = db.Column(db.Integer, db.ForeignKey('products.id'), nullable=False)
+    quantity = db.Column(db.Integer, nullable=False)
+    total = db.Column(db.Float, nullable=False)
+
+    customer = db.relationship('Customer', backref='sales')
+    product = db.relationship('Product', backref='sales')
+
+# -------------------- Invoice --------------------
+class Invoice(db.Model):
+    __tablename__ = "invoices"
+
+    id = db.Column(db.Integer, primary_key=True)
+    sale_id = db.Column(db.Integer, db.ForeignKey('sales.id'), nullable=False)
+    status = db.Column(db.String(50), default='Unpaid')
+
+    sale = db.relationship('Sale', backref='invoice')

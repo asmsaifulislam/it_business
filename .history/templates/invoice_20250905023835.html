@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="mb-4">Invoices</h2>
+
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Invoice ID</th>
+            <th>Sale ID</th>
+            <th>Customer</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for invoice in invoices %}
+        <tr>
+            <td>{{ invoice.id }}</td>
+            <td>{{ invoice.sale.id }}</td>
+            <td>{{ invoice.sale.customer.name }}</td>
+            <td>{{ invoice.sale.product.name }}</td>
+            <td>{{ invoice.sale.quantity }}</td>
+            <td>${{ "%.2f"|format(invoice.sale.total) }}</td>
+            <td>
+                {% if invoice.status == 'Paid' %}
+                    <span class="badge bg-success">Paid</span>
+                {% else %}
+                    <span class="badge bg-warning text-dark">Unpaid</span>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<form action="{{ url_for('generate_invoice', sale_id=invoice.sale.id) }}" method="post" style="display:inline;">
+    <button type="submit" class="btn btn-primary btn-sm">Generate Invoice</button>
+</form>
+
+{% endblock %}

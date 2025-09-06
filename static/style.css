@@ -1,0 +1,221 @@
+/* Base Reset */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f9;
+    color: #212529;
+    text-align: center;
+}
+
+/* Navbar */
+nav.navbar {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+nav.navbar:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    letter-spacing: 0.5px;
+    color: #2c3e50;
+}
+
+.nav-link {
+    font-size: 1rem;
+    margin-right: 12px;
+    position: relative;
+    color: #2c3e50;
+    transition: color 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0%;
+    height: 2px;
+    background-color: #198754;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #198754;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Container */
+.container {
+    padding: 30px 20px;
+    max-width: 960px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Headings */
+h2 {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    transform: translateZ(20px);
+}
+
+/* Tables */
+table {
+    font-size: 0.95rem;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 800px;
+    border-collapse: collapse;
+    transition: transform 0.3s ease;
+}
+
+.table th {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 12px;
+}
+
+.table td {
+    vertical-align: middle;
+    text-align: center;
+    padding: 10px;
+    background-color: #ffffff;
+}
+
+.table tbody tr {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.table tbody tr:hover {
+    background-color: #f0f8ff;
+    transform: scale(1.01) translateZ(10px);
+}
+
+/* Buttons */
+.btn {
+    font-weight: 500;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    background-color: #198754;
+    color: white;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(25, 135, 84, 0.2);
+}
+
+.btn:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 16px rgba(25, 135, 84, 0.3);
+    background-color: #157347;
+}
+
+/* Cards */
+.card {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: none;
+    text-align: center;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: rotateX(3deg) rotateY(3deg);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* Alerts */
+.alert {
+    font-size: 0.9rem;
+    max-width: 600px;
+    margin: 0 auto 20px;
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+/* Forms */
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: left;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.form-label {
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+.form-control {
+    border-radius: 4px;
+    font-size: 0.95rem;
+    padding: 10px;
+    margin-bottom: 15px;
+    transition: box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 8px rgba(25, 135, 84, 0.3);
+    border-color: #198754;
+}
+
+/* Badges */
+.badge {
+    font-size: 0.85rem;
+    padding: 6px 10px;
+    border-radius: 4px;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Enhancements */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 10px;
+    }
+
+    form {
+        padding: 20px;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+}

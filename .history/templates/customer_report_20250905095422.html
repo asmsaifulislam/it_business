@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="mb-4">Customer Report</h2>
+
+<div class="card border-success mb-4">
+    <div class="card-header bg-success text-white">Overview</div>
+    <div class="card-body">
+        <p>Track customer growth, retention rates, and engagement metrics.</p>
+        <ul>
+            <li>Total Customers: 1,250</li>
+            <li>New This Month: 85</li>
+            <li>Retention Rate: 92%</li>
+        </ul>
+    </div>
+</div>
+
+<div class="card border-info">
+    <div class="card-header bg-info text-white">Activity Summary</div>
+    <div class="card-body">
+        <p>Recent logins, purchases, and feedback trends.</p>
+    </div>
+</div>
+{% endblock %}

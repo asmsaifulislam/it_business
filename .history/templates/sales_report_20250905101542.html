@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="mb-4">Sales Report</h2>
+
+<div class="card border-primary mb-4">
+    <div class="card-header bg-primary text-white">Overview</div>
+    <div class="card-body">
+        <ul>
+    <li>Total Sales: {{ total_sales }}</li>
+    <li>Total Revenue: ${{ total_revenue }}</li>
+    <li>Top-Selling Product: {{ top_product }}</li>
+</ul>
+
+    </div>
+</div>
+
+<div class="card border-info">
+    <div class="card-header bg-info text-white">Revenue Trends</div>
+    <div class="card-body">
+        <p>Visualize revenue performance over time, seasonal spikes, and campaign impact.</p>
+        <!-- Placeholder for chart or dynamic data -->
+    </div>
+</div>
+{% endblock %}

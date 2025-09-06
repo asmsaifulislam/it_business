@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="mb-4">Product Report</h2>
+
+<div class="card border-warning mb-4">
+    <div class="card-header bg-warning text-dark">Inventory Status</div>
+    <div class="card-body">
+        <p>Monitor stock levels, reorder alerts, and product availability.</p>
+        <ul>
+            <li>Top-Selling Product: SmartWatch X</li>
+            <li>Low Stock Items: 12</li>
+            <li>Out of Stock: 3</li>
+        </ul>
+    </div>
+</div>
+
+<div class="card border-secondary">
+    <div class="card-header bg-secondary text-white">Pricing Trends</div>
+    <div class="card-body">
+        <p>Recent price changes and seasonal adjustments.</p>
+    </div>
+</div>
+{% endblock %}

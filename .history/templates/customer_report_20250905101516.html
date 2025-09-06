@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="mb-4">Customer Report</h2>
+
+<div class="card border-success mb-4">
+    <div class="card-header bg-success text-white">Overview</div>
+    <div class="card-body">
+       <p>Total Customers: {{ total_customers }}</p>
+<h5>Recent Customers:</h5>
+<ul>
+    {% for customer in recent_customers %}
+        <li>{{ customer.name }} ({{ customer.email }})</li>
+    {% endfor %}
+</ul>
+
+    </div>
+</div>
+
+<div class="card border-info">
+    <div class="card-header bg-info text-white">Activity Summary</div>
+    <div class="card-body">
+        <p>Recent logins, purchases, and feedback trends.</p>
+    </div>
+</div>
+{% endblock %}

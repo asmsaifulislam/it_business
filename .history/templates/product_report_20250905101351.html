@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="mb-4">Product Report</h2>
+
+<div class="card border-warning mb-4">
+    <div class="card-header bg-warning text-dark">Inventory Status</div>
+    <div class="card-body">
+        <p>Total Products: {{ total_products }}</p>
+<h5>Low Stock Items:</h5>
+<ul>
+    {% for product in low_stock %}
+        <li>{{ product.name }} — {{ product.stock }} left</li>
+    {% endfor %}
+</ul>
+    </div>
+</div>
+
+<div class="card border-secondary">
+    <div class="card-header bg-secondary text-white">Pricing Trends</div>
+    <div class="card-body">
+        <p>Recent price changes and seasonal adjustments.</p>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,104 @@
+/* Base Reset */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #212529;
+    text-align: center;
+}
+
+/* Navbar */
+nav.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+
+.nav-link {
+    font-size: 1rem;
+    margin-right: 10px;
+}
+
+/* Container */
+.container {
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Headings */
+h2 {
+    font-weight: 600;
+    color: #343a40;
+    margin-bottom: 30px;
+}
+
+/* Tables */
+table {
+    font-size: 0.95rem;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 800px;
+}
+
+.table th {
+    background-color: #343a40;
+    color: white;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+/* Buttons */
+.btn {
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+
+/* Cards */
+.card {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    border: none;
+    text-align: center;
+}
+
+.card-header {
+    font-weight: 600;
+}
+
+/* Alerts */
+.alert {
+    font-size: 0.9rem;
+    max-width: 600px;
+    margin: 0 auto 20px;
+}
+
+/* Forms */
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.form-label {
+    font-weight: 500;
+}
+
+.form-control {
+    border-radius: 4px;
+    font-size: 0.95rem;
+}
+
+/* Badges */
+.badge {
+    font-size: 0.85rem;
+    padding: 6px 10px;
+    border-radius: 4px;
+}

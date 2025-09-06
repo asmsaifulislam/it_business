@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="mb-4">Sales Records</h2>
+
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Sale ID</th>
+            <th>Customer</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Total ($)</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for sale in sales %}
+        <tr>
+            <td>{{ sale.id }}</td>
+            <td>{{ sale.customer.name }}</td>
+            <td>{{ sale.product.name }}</td>
+            <td>{{ sale.quantity }}</td>
+            <td>${{ "%.2f"|format(sale.total) }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{{ url_for('record_sale') }}" class="btn btn-primary mt-3">Record New Sale</a>
+
+{% endblock %}

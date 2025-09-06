@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="login-wrapper">
+    <h2 class="mb-4">Update Account</h2>
+
+    <form method="POST" class="login-form">
+        {{ form.hidden_tag() }}
+
+        <div class="mb-3 text-start">
+            {{ form.username.label(class="form-label") }}
+            {{ form.username(class="form-control") }}
+        </div>
+
+        <div class="mb-3 text-start">
+            {{ form.current_password.label(class="form-label") }}
+            {{ form.current_password(class="form-control") }}
+        </div>
+
+        <div class="mb-3 text-start">
+            {{ form.new_password.label(class="form-label") }}
+            {{ form.new_password(class="form-control") }}
+        </div>
+
+        <div class="mb-3 text-start">
+            {{ form.confirm_password.label(class="form-label") }}
+            {{ form.confirm_password(class="form-control") }}
+        </div>
+
+        <div class="d-grid">
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
+    </form>
+</div>
+{% endblock %}

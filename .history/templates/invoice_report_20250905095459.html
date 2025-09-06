@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="mb-4">Invoice Report</h2>
+
+<div class="card border-danger mb-4">
+    <div class="card-header bg-danger text-white">Invoice Summary</div>
+    <div class="card-body">
+        <p>Overview of paid, unpaid, and overdue invoices.</p>
+        <ul>
+            <li>Total Invoices: 320</li>
+            <li>Paid: 280</li>
+            <li>Unpaid: 30</li>
+            <li>Overdue: 10</li>
+        </ul>
+    </div>
+</div>
+
+<div class="card border-dark">
+    <div class="card-header bg-dark text-white">Alerts & Actions</div>
+    <div class="card-body">
+        <p>Send reminders, apply late fees, or export reports.</p>
+    </div>
+</div>
+{% endblock %}
