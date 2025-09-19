@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Invoices</h2>
+<a href="{{ url_for('create_invoice') }}" class="btn btn-success mb-3">Create New Invoice</a>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover text-center">
+        <thead class="table-dark">
+            <tr>
+                <th>Invoice ID</th>
+                <th>Sale ID</th>
+                <th>Customer</th>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Total ($)</th>
+                <th>Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for invoice in invoices %}
+            <tr>
+                <td>{{ invoice.id }}</td>
+                <td>{{ invoice.sale_id }}</td>
+                <td>{{ invoice.customer }}</td>
+                <td>{{ invoice.product }}</td>
+                <td>{{ invoice.quantity }}</td>
+                <td>${{ "%.2f"|format(invoice.total) }}</td>
+                <td>{{ invoice.date_created.strftime('%Y-%m-%d %H:%M') }}</td>
+                <td>{{ invoice.status }}</td>
+            </tr>
+            {% else %}
+            <tr><td colspan="8">No invoices found.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

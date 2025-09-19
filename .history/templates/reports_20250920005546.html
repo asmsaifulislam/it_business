@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="mb-4">Business Reports</h2>
+
+<div class="row">
+    <!-- Sales Report -->
+    <div class="col-md-6 mb-4">
+        <div class="card border-primary">
+            <div class="card-header bg-primary text-white">Sales Report</div>
+            <div class="card-body">
+                <p>Total sales, revenue trends, and top-selling products.</p>
+                <a href="{{ url_for('sales_report_view') }}" class="btn btn-outline-primary">View Details</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Customer Report -->
+    <div class="col-md-6 mb-4">
+        <div class="card border-success">
+            <div class="card-header bg-success text-white">Customer Report</div>
+            <div class="card-body">
+                <p>Customer growth, retention, and activity summary.</p>
+                <a href="{{ url_for('customer_report') }}" class="btn btn-outline-success">View Details</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Report -->
+    <div class="col-md-6 mb-4">
+        <div class="card border-warning shadow-sm">
+            <div class="card-header bg-warning text-dark d-flex justify-content-between align-items-center">
+                <span><i class="bi bi-box-seam me-2"></i>Product Report</span>
+                {% if low_stock|length > 0 %}
+                    <span class="badge bg-danger">{{ low_stock|length }} low-stock</span>
+                {% else %}
+                    <span class="badge bg-success">Stock OK</span>
+                {% endif %}
+            </div>
+            <div class="card-body">
+                <p>Inventory status, pricing trends, and product performance.</p>
+                <a href="{{ url_for('product_report') }}" class="btn btn-outline-warning">View Details</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Invoice Report -->
+    <div class="col-md-6 mb-4">
+        <div class="card border-danger">
+            <div class="card-header bg-danger text-white">Invoice Report</div>
+            <div class="card-body">
+                <p>Paid vs unpaid invoices, overdue alerts, and totals.</p>
+                <a href="{{ url_for('invoice_report') }}" class="btn btn-outline-danger">View Details</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Optional: Show full product stock table -->
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-dark text-white">Product Stock Details</div>
+            <div class="card-body">
+                <table class="table table-bordered table-striped text-center align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Product ID</th>
+                            <th>Name</th>
+                            <th>Price ($)</th>
+                            <th>Stock</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for product in products %}
+                        <tr>
+                            <td>{{ product.id }}</td>
+                            <td>{{ product.name }}</td>
+                            <td>${{ "{:,.2f}".format(product.price) }}</td>
+                            <td>
+                                {% if product.current_stock < 10 %}
+                                    <span class="badge bg-danger">{{ product.current_stock }}</span>
+                                {% else %}
+                                    <span class="badge bg-success">{{ product.current_stock }}</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

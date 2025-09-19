@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Create New Invoice</h2>
+<form method="POST">
+    {{ form.hidden_tag() }}
+
+    <!-- Sale Selection -->
+    <div class="mb-3">
+        {{ form.sale_id.label(class="form-label") }}
+        {{ form.sale_id(class="form-select") }}
+    </div>
+
+    <!-- Status Selection -->
+    <div class="mb-3">
+        {{ form.status.label(class="form-label") }}
+        {{ form.status(class="form-select") }}
+    </div>
+
+    <!-- Auto-filled fields (read-only) -->
+    <div class="mb-3">
+        <label class="form-label">Customer</label>
+        <input type="text" class="form-control" id="customer" readonly>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Product</label>
+        <input type="text" class="form-control" id="product" readonly>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Quantity</label>
+        <input type="text" class="form-control" id="quantity" readonly>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Total ($)</label>
+        <input type="text" class="form-control" id="total" readonly>
+    </div>
+
+    {{ form.submit(class="btn btn-success") }}
+</form>
+
+<script>
+const sales = {{ sales|tojson }};
+const saleSelect = document.querySelector('select[name="sale_id"]');
+
+function updateFields() {
+    const saleId = parseInt(saleSelect.value);
+    const sale = sales.find(s => s.id === saleId);
+    if (sale) {
+        document.getElementById('customer').value = sale.customer_name;
+        document.getElementById('product').value = sale.product_name;
+        document.getElementById('quantity').value = sale.quantity;
+        document.getElementById('total').value = sale.total.toFixed(2);
+    }
+}
+
+saleSelect.addEventListener('change', updateFields);
+window.addEventListener('load', updateFields);
+</script>
+{% endblock %}

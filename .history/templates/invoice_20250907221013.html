@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Header and Button Row -->
+<div class="d-flex justify-content-between align-items-center mb-3 px-3">
+    <h2 class="mb-0">Invoices</h2>
+    <a href="{{ url_for('create_invoice') }}" class="btn btn-success">Create New Invoice</a>
+</div>
+
+<!-- Fixed-Width Table -->
+<div class="table-responsive px-0">
+    <table class="table table-bordered table-hover" style="width:2374px; margin:0 auto;">
+        <thead class="table-dark">
+            <tr>
+                <th>Invoice ID</th>
+                <th>Sale ID</th>
+                <th>Customer</th>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Total ($)</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for invoice in invoices %}
+            <tr>
+                <td>{{ invoice.id }}</td>
+                <td>{{ invoice.sale.id }}</td>
+                <td>{{ invoice.sale.customer.name if invoice.sale and invoice.sale.customer else 'N/A' }}</td>
+                <td>{{ invoice.sale.product.name if invoice.sale and invoice.sale.product else 'N/A' }}</td>
+                <td>{{ invoice.sale.quantity }}</td>
+                <td>${{ "%.2f"|format(invoice.sale.total) }}</td>
+                <td>{{ invoice.sale.updated_at.strftime('%Y-%m-%d %H:%M') }}</td>
+                <td>
+                    {% if invoice.status == 'Paid' %}
+                        <span class="badge bg-success">Paid</span>
+                    {% else %}
+                        <span class="badge bg-warning text-dark">Unpaid</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if invoice.status != 'Paid' %}
+                    <form action="{{ url_for('generate_invoice', sale_id=invoice.sale.id) }}" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-primary btn-sm">Generate Invoice</button>
+                    </form>
+                    {% else %}
+                        <button class="btn btn-secondary btn-sm" disabled>Already Paid</button>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

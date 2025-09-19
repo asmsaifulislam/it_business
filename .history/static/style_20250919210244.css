@@ -1,0 +1,166 @@
+/* =========================
+   Base Reset
+========================= */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f9;
+    color: #212529;
+    text-align: center;
+}
+
+/* =========================
+   Navbar
+========================= */
+nav.navbar {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+nav.navbar:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    letter-spacing: 0.5px;
+    color: #2c3e50;
+}
+
+.nav-link {
+    font-size: 1rem;
+    margin-right: 12px;
+    position: relative;
+    color: #2c3e50;
+    transition: color 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0%;
+    height: 2px;
+    background-color: #198754;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #198754;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* =========================
+   Container
+========================= */
+.container {
+    padding: 30px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* =========================
+   Headings
+========================= */
+h2 {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 30px;
+}
+
+/* =========================
+   Table Styles
+========================= */
+table {
+    font-size: 0.95rem;
+    margin: 0 auto;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 12px;
+}
+
+.table td {
+    vertical-align: middle;
+    text-align: center;
+    padding: 10px;
+    background-color: #ffffff;
+}
+
+.table tbody tr:hover {
+    background-color: #f0f8ff;
+}
+
+/* =========================
+   Buttons
+========================= */
+.table-actions .btn {
+    width: 192px;
+    height: 82px;
+    font-size: 1.2rem;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.table-actions .btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+.table-actions .btn-success {
+    background-color: #198754;
+    color: white;
+}
+
+.table-actions .btn-success:hover {
+    background-color: #157347;
+}
+
+.table-actions .btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.table-actions .btn-danger:hover {
+    background-color: #b02a37;
+}
+
+/* =========================
+   Badges
+========================= */
+.badge {
+    font-size: 0.85rem;
+    padding: 6px 10px;
+    border-radius: 4px;
+}
+
+/* =========================
+   Responsive
+========================= */
+@media (max-width: 992px) {
+    .table-actions .btn {
+        width: 140px;
+        height: 60px;
+        font-size: 1rem;
+    }
+}

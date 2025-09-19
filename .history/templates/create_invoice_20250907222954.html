@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="mb-4">Create New Invoice</h2>
+<form method="POST">
+    {{ form.hidden_tag() }}
+
+    <!-- Sale Selection -->
+    <div class="mb-3 text-start">
+        {{ form.sale_id.label(class="form-label") }}
+        {{ form.sale_id(class="form-select") }}
+    </div>
+
+    <!-- Status Selection -->
+    <div class="mb-3 text-start">
+        {{ form.status.label(class="form-label") }}
+        {{ form.status(class="form-select") }}
+    </div>
+
+    <!-- Submit Button -->
+    <div class="d-grid">
+        {{ form.submit(class="btn btn-success") }}
+    </div>
+</form>
+{% endblock %}
